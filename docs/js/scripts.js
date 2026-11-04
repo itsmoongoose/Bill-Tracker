@@ -50,7 +50,17 @@ changeBtns.forEach(changeBtn => {
             // Calculations
             if (userSpentInput) {
                 replaceSpentAmount = spentAmount + userSpentInput;
+                replaceSpentAmount = replaceSpentAmount.toString();
                 replaceLeftAmount = leftAmount - userSpentInput;
+                replaceLeftAmount = replaceLeftAmount.toString();
+
+                // Add trailing 0's if number is a whole number
+                if (!replaceSpentAmount.includes(".")) {
+                    replaceSpentAmount = `${replaceSpentAmount}.00`;
+                }
+                if (!replaceLeftAmount.includes(".")) {
+                    replaceLeftAmount = `${replaceLeftAmount}.00`;
+                }
             }
 
             // Remove Old Elements
