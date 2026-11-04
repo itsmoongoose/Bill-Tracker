@@ -42,13 +42,27 @@ changeBtns.forEach(changeBtn => {
         formSubmit.addEventListener("click", (event) => {
             event.preventDefault();
             let userSpentInput = formInput.value;
+            userSpentInput = userSpentInput.trim();
             if (userSpentInput.includes("$")) {
                 userSpentInput = userSpentInput.replace("$", "");
             }
-            userSpentInput = parseFloat(userSpentInput.trim());
+            userSpentInput = parseFloat(userSpentInput);
             
             // Calculations
-            if (userSpentInput) {
+            if (userSpentInput == 0) { // Error Handling -- if input is 0
+                replaceSpentAmount = spentAmount;
+                replaceSpentAmount = replaceSpentAmount.toString();
+                replaceLeftAmount = leftAmount;
+                replaceLeftAmount = replaceLeftAmount.toString();
+
+                // Add trailing 0's if number is a whole number
+                if (!replaceSpentAmount.includes(".")) {
+                    replaceSpentAmount = `${replaceSpentAmount}.00`;
+                }
+                if (!replaceLeftAmount.includes(".")) {
+                    replaceLeftAmount = `${replaceLeftAmount}.00`;
+                }
+            } else if (userSpentInput) { // Error Handling -- if input exists and is not 0
                 replaceSpentAmount = spentAmount + userSpentInput;
                 replaceSpentAmount = replaceSpentAmount.toString();
                 replaceLeftAmount = leftAmount - userSpentInput;
