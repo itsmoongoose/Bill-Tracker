@@ -28,13 +28,13 @@ changeBtns.forEach(changeBtn => {
 
         // Translate html Content to Numbers
         const spentElement = indivContainer.querySelector(".spent-amount");
-        let spentAmount = spentElement.textContent;
-        spentAmount = spentAmount.replace("$", "");
+        const spentElementContent = spentElement.textContent;
+        let spentAmount = spentElementContent.replace("$", "");
         spentAmount = spentAmount.split(" ", 1);
         spentAmount = parseFloat(spentAmount);
         const leftElement = indivContainer.querySelector(".left-amount");
-        let leftAmount = leftElement.textContent;
-        leftAmount = leftAmount.replace("$", "");
+        const leftElementContent = leftElement.textContent;
+        let leftAmount = leftElementContent.replace("$", "");
         leftAmount = leftAmount.split(" ", 1);
         leftAmount = parseFloat(leftAmount);
 
@@ -46,14 +46,11 @@ changeBtns.forEach(changeBtn => {
             if (userSpentInput.includes("$")) {
                 userSpentInput = userSpentInput.replace("$", "");
             }
-            userSpentInput = parseFloat(userSpentInput);
             
             // Calculations
-            if (userSpentInput == 0) { // Error Handling -- if input is 0
-                replaceSpentAmount = spentAmount;
-                replaceSpentAmount = replaceSpentAmount.toString();
-                replaceLeftAmount = leftAmount;
-                replaceLeftAmount = replaceLeftAmount.toString();
+            if (userSpentInput == 0 || userSpentInput == "") { // Error Handling -- input is empty or is 0
+                replaceSpentAmount = spentElementContent;
+                replaceLeftAmount = leftElementContent;
 
                 // Add trailing 0's if number is a whole number
                 if (!replaceSpentAmount.includes(".")) {
@@ -62,7 +59,8 @@ changeBtns.forEach(changeBtn => {
                 if (!replaceLeftAmount.includes(".")) {
                     replaceLeftAmount = `${replaceLeftAmount}.00`;
                 }
-            } else if (userSpentInput) { // Error Handling -- if input exists and is not 0
+            } else { // Error Handling -- input exists and is not 0
+                userSpentInput = parseFloat(userSpentInput);
                 replaceSpentAmount = spentAmount + userSpentInput;
                 replaceSpentAmount = replaceSpentAmount.toString();
                 replaceLeftAmount = leftAmount - userSpentInput;
@@ -70,17 +68,17 @@ changeBtns.forEach(changeBtn => {
 
                 // Add trailing 0's if number is a whole number
                 if (!replaceSpentAmount.includes(".")) {
-                    replaceSpentAmount = `${replaceSpentAmount}.00`;
+                    replaceSpentAmount = `$${replaceSpentAmount}.00 spent`;
                 }
                 if (!replaceLeftAmount.includes(".")) {
-                    replaceLeftAmount = `${replaceLeftAmount}.00`;
+                    replaceLeftAmount = `$${replaceLeftAmount}.00 left`;
                 }
             }
 
             // Remove And Update Elements
             indivContainer.removeChild(form);
-            spentElement.textContent = `$${replaceSpentAmount} spent`;
-            leftElement.textContent = `$${replaceLeftAmount} left`;
+            spentElement.textContent = replaceSpentAmount;
+            leftElement.textContent = replaceLeftAmount;
 
             // Display Change Button
             changeBtn.classList.remove("hidden");
