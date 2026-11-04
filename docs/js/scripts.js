@@ -1,9 +1,28 @@
 // Define Variables
 const changeBtns = document.querySelectorAll(".change-btn");
+const divIndivContainer = document.querySelectorAll(".indiv-container");
 let replaceSpentAmount;
 let replaceLeftAmount;
 
-// Main Program
+// Event Listener -- window
+window.addEventListener("load", () => {
+    divIndivContainer.forEach(div => {
+        if (div.id != "savings") {
+            if (localStorage.getItem(div.id)) {
+                let divValue = localStorage.getItem(div.id);
+                divValue = JSON.parse(divValue);
+                const divSpentValue = divValue[0];
+                const divLeftValue = divValue[1];            
+                const divSpentElement = div.querySelector(".spent-amount");
+                const divLeftElement = div.querySelector(".left-amount");
+                divSpentElement.textContent = divSpentValue;
+                divLeftElement.textContent = divLeftValue;
+            }
+        }
+    });
+});
+
+// Event Listener -- change button
 changeBtns.forEach(changeBtn => {
     changeBtn.addEventListener("click", () => {
         const indivContainer = changeBtn.closest("div");
@@ -79,6 +98,11 @@ changeBtns.forEach(changeBtn => {
             indivContainer.removeChild(form);
             spentElement.textContent = replaceSpentAmount;
             leftElement.textContent = replaceLeftAmount;
+
+            // Update Local Storage
+            const storageKey = indivContainer.id;
+            const storageValue = [replaceSpentAmount, replaceLeftAmount];
+            localStorage.setItem(storageKey, JSON.stringify(storageValue));
 
             // Display Change Button
             changeBtn.classList.remove("hidden");
