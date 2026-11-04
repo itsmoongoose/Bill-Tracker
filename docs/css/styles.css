@@ -79,7 +79,13 @@ button {
     background-color: var(--white);
     color: var(--black);
     border: 2px solid var(--white);
-    border-radius: 10%;
+    border-radius: 5px;
     padding: 2px 4px;
     margin-top: 10px;
+}
+
+button:hover {
+    border: 2px solid var(--med-teal);
+    color: var(--med-teal);
+    cursor: pointer;
 }
