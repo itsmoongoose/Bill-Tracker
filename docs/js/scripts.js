@@ -5,11 +5,11 @@ let replaceLeftAmount;
 
 // Main Program
 changeBtns.forEach(changeBtn => {
-    changeBtn.addEventListener("click", (event) => {
+    changeBtn.addEventListener("click", () => {
         const indivContainer = changeBtn.closest("div");
 
         // Remove Change Button
-        indivContainer.removeChild(changeBtn);
+        changeBtn.classList.add("hidden");
 
         // Create Form
         const form = document.createElement("form");
@@ -63,26 +63,13 @@ changeBtns.forEach(changeBtn => {
                 }
             }
 
-            // Remove Old Elements
-            indivContainer.removeChild(spentElement);
-            indivContainer.removeChild(leftElement);
+            // Remove And Update Elements
             indivContainer.removeChild(form);
+            spentElement.textContent = `$${replaceSpentAmount} spent`;
+            leftElement.textContent = `$${replaceLeftAmount} left`;
 
-            // Display Updated Elements
-            const updatedSpentElement = document.createElement("p");
-            updatedSpentElement.classList.add("spent-amount");
-            updatedSpentElement.textContent = `$${replaceSpentAmount} spent`;
-            const updatedLeftElement = document.createElement("p");
-            updatedLeftElement.classList.add("left-amount");
-            updatedLeftElement.textContent = `$${replaceLeftAmount} left`;
-            indivContainer.appendChild(updatedSpentElement);
-            indivContainer.appendChild(updatedLeftElement);
-
-            // Recreate and Display Change Button
-            const newChangeBtn = document.createElement("button");
-            newChangeBtn.classList.add("change-btn");
-            newChangeBtn.textContent = "Change";
-            indivContainer.appendChild(newChangeBtn);
+            // Display Change Button
+            changeBtn.classList.remove("hidden");
         });
     });
 });

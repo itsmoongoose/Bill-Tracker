@@ -12,6 +12,10 @@
     --light-teal: #90ddf0;
 }
 
+.hidden {
+    display: none;
+}
+
 body {
     background-color: var(--black);
     color: var(--white);
