@@ -1,0 +1,19 @@
+# __Bill Tracker__
+## __Project Description__
+__*Scope and Functionality*__ - The Bill Tracker program can be used to track monthly spending on recurring expenses.
+
+__*Motivation*__ - Allows me to demonstrate my knowledge of front end software development learned during my program at the University of Alberta.
+
+## __Technology Stack__
+- git version 2.53.0.windows.3
+- GitHub
+- Visual Studio Code
+
+## __Planned Features & Known Bugs__
+__Planned Features:__
+- FEAT-QOL-001: Functional savings preview
+__Known Bugs:__
+- BUGS-NEC-001: Rounding to 2 decimals does not work as intended
+
+## __Installation & Setup__
+This program is not currently deployed/available. Please return here often to check the status!
