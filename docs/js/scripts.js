@@ -6,6 +6,8 @@ let replaceLeftAmount;
 
 // Event Listener -- window
 window.addEventListener("load", () => {
+
+    // Import Bill Stats -- from local storage
     divIndivContainer.forEach(div => {
         if (div.id != "savings") {
             if (localStorage.getItem(div.id)) {
@@ -67,7 +69,7 @@ changeBtns.forEach(changeBtn => {
             }
             
             // Calculations
-            if (userSpentInput == 0 || userSpentInput == "") { // Error Handling -- input is empty or is 0
+            if (userSpentInput == 0 || userSpentInput == "") { // Error Handling -- invalid inputs
                 replaceSpentAmount = spentElementContent;
                 replaceLeftAmount = leftElementContent;
 
@@ -78,7 +80,7 @@ changeBtns.forEach(changeBtn => {
                 if (!replaceLeftAmount.includes(".")) {
                     replaceLeftAmount = `${replaceLeftAmount}.00`;
                 }
-            } else { // Error Handling -- input exists and is not 0
+            } else { // Error Handling -- valid input
                 userSpentInput = parseFloat(userSpentInput);
                 replaceSpentAmount = spentAmount + userSpentInput;
                 replaceSpentAmount = replaceSpentAmount.toString();
@@ -88,9 +90,13 @@ changeBtns.forEach(changeBtn => {
                 // Add trailing 0's if number is a whole number
                 if (!replaceSpentAmount.includes(".")) {
                     replaceSpentAmount = `$${replaceSpentAmount}.00 spent`;
+                } else {
+                    replaceSpentAmount = `$${replaceSpentAmount} spent`;
                 }
                 if (!replaceLeftAmount.includes(".")) {
                     replaceLeftAmount = `$${replaceLeftAmount}.00 left`;
+                } else {
+                    replaceLeftAmount = `$${replaceLeftAmount} left`;
                 }
             }
 
