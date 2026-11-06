@@ -1,1 +1,3 @@
 BUGS-NEC-001: Rounding to 2 decimals does not work as intended
+- Fix pushed Nov.05/2026 (by itsmoongoose)
+- Updated rounding logic to use "toFixed(2)"
