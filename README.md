@@ -11,7 +11,9 @@ __*Motivation*__ - Allows me to demonstrate my knowledge of front end software d
 
 ## __Planned Features & Known Bugs__
 __Planned Features:__
+- FEAT-NEC-001: Visual support for tablet and desktop screen sizes
 - FEAT-QOL-001: Savings preview updates on change rather than only at window load
+- FEAT-QOL-002: Button that clears local storage for easier month-to-month reset
 __Known Bugs:__
 There are no *known* bugs at this time!
 
