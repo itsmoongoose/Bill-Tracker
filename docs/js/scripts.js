@@ -38,13 +38,8 @@ window.addEventListener("load", () => {
     });
     
     // Display Savings Summary
-    totalSavings = totalSavings.toString();
-    if (!totalSavings.includes(".")) {
-        totalSavings = `$${totalSavings}.00`;
-    } else {
-        totalSavings = `$${totalSavings}`;
-    }
-    savingsAmountP.textContent = totalSavings;
+    totalSavings = totalSavings.toFixed(2);
+    savingsAmountP.textContent = `$${totalSavings}`;
 });
 
 // Event Listener -- change button
@@ -76,6 +71,7 @@ changeBtns.forEach(changeBtn => {
         let spentAmount = spentElementContent.replace("$", "");
         spentAmount = spentAmount.split(" ", 1);
         spentAmount = parseFloat(spentAmount);
+
         const leftElement = indivContainer.querySelector(".left-amount");
         const leftElementContent = leftElement.textContent;
         let leftAmount = leftElementContent.replace("$", "");
@@ -95,32 +91,14 @@ changeBtns.forEach(changeBtn => {
             if (userSpentInput == 0 || userSpentInput == "") { // Error Handling -- invalid inputs
                 replaceSpentAmount = spentElementContent;
                 replaceLeftAmount = leftElementContent;
-
-                // Add trailing 0's if number is a whole number
-                if (!replaceSpentAmount.includes(".")) {
-                    replaceSpentAmount = `${replaceSpentAmount}.00`;
-                }
-                if (!replaceLeftAmount.includes(".")) {
-                    replaceLeftAmount = `${replaceLeftAmount}.00`;
-                }
             } else { // Error Handling -- valid input
                 userSpentInput = parseFloat(userSpentInput);
-                replaceSpentAmount = spentAmount + userSpentInput;
-                replaceSpentAmount = replaceSpentAmount.toString();
+                replaceSpentAmount = spentAmount + userSpentInput; // calculate
                 replaceLeftAmount = leftAmount - userSpentInput;
-                replaceLeftAmount = replaceLeftAmount.toString();
-
-                // Add trailing 0's if number is a whole number
-                if (!replaceSpentAmount.includes(".")) {
-                    replaceSpentAmount = `$${replaceSpentAmount}.00 spent`;
-                } else {
-                    replaceSpentAmount = `$${replaceSpentAmount} spent`;
-                }
-                if (!replaceLeftAmount.includes(".")) {
-                    replaceLeftAmount = `$${replaceLeftAmount}.00 left`;
-                } else {
-                    replaceLeftAmount = `$${replaceLeftAmount} left`;
-                }
+                replaceSpentAmount = replaceSpentAmount.toFixed(2); // round/add trailing zeros
+                replaceLeftAmount = replaceLeftAmount.toFixed(2);
+                replaceSpentAmount = `$${replaceSpentAmount} spent`; // add text
+                replaceLeftAmount = `$${replaceLeftAmount} left`;
             }
 
             // Remove And Update Elements
