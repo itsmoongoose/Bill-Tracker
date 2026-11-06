@@ -93,3 +93,41 @@ button:hover {
     color: var(--med-teal);
     cursor: pointer;
 }
+
+#clear-btn {
+    width: 135px;
+    height: 40px;
+    border: 2px solid var(--med-teal);
+    color: var(--med-teal);
+    margin-top: 20px;
+}
+
+#clear-btn:hover, .button-div button:hover {
+    background-color: var(--med-teal);
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+
+.warning-div {
+    margin: 10px 5px;
+    width: 130px;
+    height: auto;
+}
+
+.button-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-div button {
+    width: 60px;
+    height: 35px;
+    border: 2px solid var(--med-teal);
+    color: var(--med-teal);
+}
+
+.button-div button:first-of-type {
+    margin-right: 7px;
+}

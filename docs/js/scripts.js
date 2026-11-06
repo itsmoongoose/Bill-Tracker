@@ -2,6 +2,8 @@
 const changeBtns = document.querySelectorAll(".change-btn");
 const divIndivContainer = document.querySelectorAll(".indiv-container");
 const savingsAmountP = document.querySelector("#savings-amount");
+const clearBtn = document.querySelector("#clear-btn");
+const clearBtnDiv = document.querySelector("#clear-btn-container");
 let replaceSpentAmount;
 let replaceLeftAmount;
 let totalSavings = 0;
@@ -40,6 +42,44 @@ window.addEventListener("load", () => {
     // Display Savings Summary
     totalSavings = totalSavings.toFixed(2);
     savingsAmountP.textContent = `$${totalSavings}`;
+});
+
+// Event Listener -- clear button
+clearBtn.addEventListener("click", () => {
+    clearBtn.classList.add("hidden");
+
+    // Build and Display Warning Message
+    const warningDiv = document.createElement("div");
+    warningDiv.classList.add("warning-div");
+    const warningP = document.createElement("p");
+    warningP.textContent = "Are you sure? This action cannot be undone.";
+    const buttonDiv = document.createElement("div");
+    buttonDiv.classList.add("button-div");
+    const noBtn = document.createElement("button");
+    const yesBtn = document.createElement("button");
+    noBtn.textContent = "No";
+    yesBtn.textContent = "Yes";
+    buttonDiv.appendChild(noBtn);
+    buttonDiv.appendChild(yesBtn);
+    warningDiv.appendChild(warningP);
+    warningDiv.appendChild(buttonDiv);
+    clearBtnDiv.appendChild(warningDiv);
+
+    // Event Listener -- no button
+    noBtn.addEventListener("click", () => {
+        clearBtnDiv.removeChild(warningDiv);
+        clearBtn.classList.remove("hidden");
+    });
+
+    // Event Listener -- yes button
+    yesBtn.addEventListener("click", () => {
+        clearBtnDiv.removeChild(warningDiv);
+        clearBtn.classList.remove("hidden");
+
+        // Clear Local Storage
+        localStorage.clear();
+    });
+
 });
 
 // Event Listener -- change button
