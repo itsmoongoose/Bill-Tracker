@@ -13,7 +13,8 @@ __*Motivation*__ - Allows me to demonstrate my knowledge of front end software d
 __Planned Features:__
 - FEAT-NEC-001: Visual support for tablet and desktop screen sizes
 - FEAT-NEC-002: Add styling to Form Input Field
-- FEAT-QOL-001: Savings preview updates on change rather than only at window load\
+- FEAT-QOL-001: Savings preview updates on change rather than only at window load
+
 __Known Bugs:__
 - There are no *known* bugs at this time!
 
