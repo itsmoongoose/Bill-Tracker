@@ -13,9 +13,8 @@ __*Motivation*__ - Allows me to demonstrate my knowledge of front end software d
 __Planned Features:__
 - FEAT-NEC-001: Visual support for tablet and desktop screen sizes
 - FEAT-QOL-001: Savings preview updates on change rather than only at window load
-- FEAT-QOL-002: Button that clears local storage for easier month-to-month reset
 __Known Bugs:__
 There are no *known* bugs at this time!
 
 ## __Installation & Setup__
-This program is not currently deployed/available. Please return here often to check the status!
+This web page has been deployed using GitHub Pages! To use it, click [here](https://itsmoongoose.github.io/Bill-Tracker/).
