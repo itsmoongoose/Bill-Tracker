@@ -1,8 +1,11 @@
 // Define Variables
 const changeBtns = document.querySelectorAll(".change-btn");
 const divIndivContainer = document.querySelectorAll(".indiv-container");
+const savingsAmountP = document.querySelector("#savings-amount");
 let replaceSpentAmount;
 let replaceLeftAmount;
+let totalSavings = 0;
+let savingsNum;
 
 // Event Listener -- window
 window.addEventListener("load", () => {
@@ -19,9 +22,29 @@ window.addEventListener("load", () => {
                 const divLeftElement = div.querySelector(".left-amount");
                 divSpentElement.textContent = divSpentValue;
                 divLeftElement.textContent = divLeftValue;
+                savingsNum = divLeftValue.replace("$", "");
+                savingsNum = savingsNum.split(" ", 1);
+                savingsNum = parseFloat(savingsNum);
+                totalSavings = totalSavings + savingsNum;
+            } else {
+                const savingsElement = div.querySelector(".left-amount");
+                savingsNum = savingsElement.textContent;
+                savingsNum = savingsNum.replace("$", "");
+                savingsNum = savingsNum.split(" ", 1);
+                savingsNum = parseFloat(savingsNum);
+                totalSavings = totalSavings + savingsNum;
             }
         }
     });
+    
+    // Display Savings Summary
+    totalSavings = totalSavings.toString();
+    if (!totalSavings.includes(".")) {
+        totalSavings = `$${totalSavings}.00`;
+    } else {
+        totalSavings = `$${totalSavings}`;
+    }
+    savingsAmountP.textContent = totalSavings;
 });
 
 // Event Listener -- change button
