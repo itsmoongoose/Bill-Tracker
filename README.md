@@ -11,7 +11,7 @@ __*Motivation*__ - Allows me to demonstrate my knowledge of front end software d
 
 ## __Planned Features & Known Bugs__
 __Planned Features:__
-- FEAT-QOL-001: Functional savings preview
+- FEAT-QOL-001: Savings preview updates on change rather than only at window load
 __Known Bugs:__
 - BUGS-NEC-001: Rounding to 2 decimals does not work as intended
 
